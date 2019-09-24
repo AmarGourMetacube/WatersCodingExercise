@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/theming';
+@import "m-modified.css";
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+// Define custom color here
+html, body{
+  height: 100%;
+}
+body{
+  margin: 0;
+  
+}
+.mat-drawer-container[fullscreen] {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
+.mat-drawer-container[fullscreen].mat-drawer-opened {
+  overflow: hidden;
+}
+
+.pt-5{
+  padding-top:5rem;
+  
+}
+@media(max-width:800px){
+  .pt-5{
+  padding-top: 1rem;
+
+}
+}

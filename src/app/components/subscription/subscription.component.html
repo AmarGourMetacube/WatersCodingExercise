@@ -1,0 +1,14 @@
+<div class="container pt-5">
+    <div class="row">
+            <div class="col m6 s12" *ngFor="let product of products" [ngClass]="product.visible ?  'selected-card' : 'deselected-card'" >
+    <mat-card  [ngStyle]="{'background-color':  styleColors(product.id)}" >
+    <mat-card-title>{{product.title}} {{isSelected}}</mat-card-title>
+    <mat-card-subtitle *ngIf="product.status  != 'sold'">${{product.amount}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="product.status  == 'sold'">{{strings.BOUGHT}}</mat-card-subtitle>    
+    <mat-card-content>{{product.description}}</mat-card-content>
+    <mat-card-footer *ngIf="product.status  != 'sold'"> <button mat-button [disabled]="!product.visible" (click)="updateProduct(product,'buy')">{{strings.BUY}}</button></mat-card-footer>
+    <mat-card-footer *ngIf="product.status  == 'sold'"> <button mat-button [disabled]="!product.visible" (click)="updateProduct(product,'cancle')">{{strings.CANCEL}}</button></mat-card-footer>
+    </mat-card>
+    </div>
+    </div>
+</div>
