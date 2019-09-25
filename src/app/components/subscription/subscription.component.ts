@@ -31,8 +31,7 @@ export class SubscriptionComponent implements OnInit{
     
     if (type == "buy") {
       productDetail.status = "sold";
-    }
-    if (type == "cancle") {
+    } else {
       productDetail.status = "unsold";
     }
     

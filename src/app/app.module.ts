@@ -29,7 +29,7 @@ import { DataService } from './service/data.service';
     LayoutModule,
     MatSidenavModule,
     HttpClientModule,
-    InMemoryWebApiModule.forRoot(DataService, { delay: 100 })
+    InMemoryWebApiModule.forRoot(DataService, { delay: 0 })
   ],
   providers: [],
   bootstrap: [AppComponent]

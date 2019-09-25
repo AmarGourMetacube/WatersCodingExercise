@@ -23,7 +23,28 @@ export class CrudService {
   //
   // ─── UPDATE RECORD ──────────────────────────────────────────────────────────────
   //   
-  public updateProduct(productAttr: Product): Observable<void>{
-    return this.httpClient.put<void>(`${this.SERVER_URL + 'products'}/${productAttr.id}`,productAttr)
-}
+  public updateProduct(product: Product): Observable<void>{
+    return this.httpClient.put<void>(`${this.SERVER_URL + 'products'}/${product.id}`,product)
+  }
+
+  //
+  // ─── UPDATE DATA ON BUY/CANCLE FUNCTIONALITY ──────────────────────────────────────────────────────────────
+  //
+  changeVisiblity(productList: Product[]){
+    let result = productList.find(({ status }) => status == "sold");
+    if (result) {
+      productList = productList.map(res => {
+        if (res.status !== "sold") {
+          res.visible = false;
+        }
+        return res;
+      });
+    } else {
+      productList = productList.map(res => {
+        res.visible = true;
+        return res;
+      });
+    }
+    return productList;
+  }
 }

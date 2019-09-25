@@ -30,22 +30,8 @@ export class TwoPageComponent implements OnInit {
     */
     this.crudService.getProducts().subscribe(
       (resp: any) => {
-          this.products = resp;
-          //Find Results
-          let result = this.products.find(({ status }) => status == "sold");
-          if (result) {
-            this.products = this.products.map(res => {
-              if (res.status !== "sold") {
-                res.visible = false;
-              }
-              return res;
-            });
-          } else {
-            this.products = this.products.map(res => {
-              res.visible = true;
-              return res;
-            });
-          }
+        console.log(resp)
+          this.products = this.crudService.changeVisiblity(resp); 
           this.products = this.products.slice(2, 4).map(res => res);
         },
       err => {
